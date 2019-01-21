@@ -25,7 +25,7 @@ class IsLogin(MiddlewareMixin):
         # if path in ['/user/login/', '/user/register/', '/goods/index/', '/goods/cart/']:
         #     return None
         not_need_check = ['/user/login/', '/user/register/', '/goods/index/', '/goods/cart/',
-                          '/goods/detail/.*/', '/cart/.*/']
+                          '/goods/detail/*/', '/cart/*/']
         for check_path in not_need_check:
             if re.match(check_path, path):
                 return None

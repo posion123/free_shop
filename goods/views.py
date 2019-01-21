@@ -41,3 +41,21 @@ def detail(request, id):
                 request.session['re_shop'] = recently_shop
 
         return render(request, 'detail.html', {'goods': goods})
+
+def list(request, id):
+    if request.method == 'GET':
+        cate12 = GoodsCategory.objects.all()
+        category = GoodsCategory.objects.filter(pk=id).first()
+        goods = category.goods_set.all()
+        category_type = GoodsCategory.CATEGORY_TYPE
+        return render(request, 'list.html', {'goods':goods, 'category_type': category_type, 'category':category, 'cates':cate12})
+
+
+def all_list(request):
+    shops = Goods.objects.all()
+    return render(request, 'list.html', {'shops':shops})
+
+# def title(request, id):
+#
+#
+#     return render(request, 'list.html')
